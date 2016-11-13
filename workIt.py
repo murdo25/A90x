@@ -5,6 +5,8 @@ import random
 #get_next_message()			To get the next workout message
 #get_number_of_messages()	To get the number of times to call get_next_workout()
 #workout_finish()			To get the ending message
+#get_difficulty_message()	To get the question to ask about desired difficulty
+#get_difficulty_response()	To get a message reporting on the chosen difficulty
 
 class workIt:
 
@@ -16,21 +18,21 @@ class workIt:
 		self.exercises_easy = [0,1,2,3,4,5] #indecies of corresponding exercises
 		self.exercises_medium = [6,7,8]
 		self.exercises_hard = [9,10] #water break not included here
-		self.possible_exercises = len(exercises_easy)+len(exercises_medium)+len(exercises_hard)
+		self.possible_exercises = len(self.exercises_easy)+len(self.exercises_medium)+len(self.exercises_hard)
 
 		random.seed()
-		if self.workout_difficulty == 1:
+		if workout_difficulty == 1:
 			self.workout_exercises = [0,0,0,0,0,0,0] #only easy and medium exercises
-		if self.workout_difficulty == 2:
+		if workout_difficulty == 2:
 			self.workout_exercises = [0,0,0,0,0,0,11,0,0,0,0]
 
-		if self.workout_difficulty != 2:
+		if workout_difficulty != 2:
 			for exercise in self.workout_exercises:
 				random_choice = random.randint(0,len(self.exercises_easy)+len(self.exercises_hard)-1)
 				while random_choice in self.workout_exercises:
 					random_choice = random.randint(0,len(self.exercises_easy)+len(self.exercises_hard)-1)
 				self.workout_exercises[exercise] = random_choice
-		else
+		else :
 			for exercise in self.workout_exercises:
 				random_choice = random.randint(0,self.possible_exercises-1)
 				while random_choice in self.workout_exercises:
@@ -42,41 +44,55 @@ class workIt:
 
 	def get_next_message(self):
 		message = "Error!"
-		if self.exercise_timestamp == 0:
-			if self.workout_exercises[self.current_exercise] == 0: message = runinplace_start()
-			if self.workout_exercises[self.current_exercise] == 1: message = situps_start()
-			if self.workout_exercises[self.current_exercise] == 2: message = planks_start()
-			if self.workout_exercises[self.current_exercise] == 3: message = jumpingjacks_start()
-			if self.workout_exercises[self.current_exercise] == 4: message = calfraises_start()
-			if self.workout_exercises[self.current_exercise] == 5: message = wallsits_start()
-			if self.workout_exercises[self.current_exercise] == 6: message = pushups_start()
-			if self.workout_exercises[self.current_exercise] == 7: message = lunges_start()
-			if self.workout_exercises[self.current_exercise] == 8: message = squats_start()
-			if self.workout_exercises[self.current_exercise] == 9: message = suicides_start()
-			if self.workout_exercises[self.current_exercise] == 10: message = explosions_start()
-			if self.workout_exercises[self.current_exercise] == 11: message = waterbreak_start()
-		else
-			if self.workout_exercises[self.current_exercise] == 0: message = runinplace_encouragement()
-			if self.workout_exercises[self.current_exercise] == 1: message = situps_encouragement()
-			if self.workout_exercises[self.current_exercise] == 2: message = planks_encouragement()
-			if self.workout_exercises[self.current_exercise] == 3: message = jumpingjacks_encouragement()
-			if self.workout_exercises[self.current_exercise] == 4: message = calfraises_encouragement()
-			if self.workout_exercises[self.current_exercise] == 5: message = wallsits_encouragement()
-			if self.workout_exercises[self.current_exercise] == 6: message = pushups_encouragement()
-			if self.workout_exercises[self.current_exercise] == 7: message = lunges_encouragement()
-			if self.workout_exercises[self.current_exercise] == 8: message = squats_encouragement()
-			if self.workout_exercises[self.current_exercise] == 9: message = suicides_encouragement()
-			if self.workout_exercises[self.current_exercise] == 10: message = explosions_encouragement()
-			if self.workout_exercises[self.current_exercise] == 11: message = waterbreak_encouragement()
-		if self.exercise_timestamp == 3
-			self.exercise_timestamp = 0
-		else self.exercise_timestamp = self.exercise_timestamp + 1
+		if self.current_exercise < len(self.workout_exercises):
+			if self.exercise_timestamp == 0:
+				if self.workout_exercises[self.current_exercise] == 0: message = self.runinplace_start()
+				if self.workout_exercises[self.current_exercise] == 1: message = self.situps_start()
+				if self.workout_exercises[self.current_exercise] == 2: message = self.planks_start()
+				if self.workout_exercises[self.current_exercise] == 3: message = self.jumpingjacks_start()
+				if self.workout_exercises[self.current_exercise] == 4: message = self.calfraises_start()
+				if self.workout_exercises[self.current_exercise] == 5: message = self.wallsits_start()
+				if self.workout_exercises[self.current_exercise] == 6: message = self.pushups_start()
+				if self.workout_exercises[self.current_exercise] == 7: message = self.lunges_start()
+				if self.workout_exercises[self.current_exercise] == 8: message = self.squats_start()
+				if self.workout_exercises[self.current_exercise] == 9: message = self.suicides_start()
+				if self.workout_exercises[self.current_exercise] == 10: message = self.explosions_start()
+				if self.workout_exercises[self.current_exercise] == 11: message = self.waterbreak_start()
+			else
+				if self.workout_exercises[self.current_exercise] == 0: message = self.runinplace_encouragement()
+				if self.workout_exercises[self.current_exercise] == 1: message = self.situps_encouragement()
+				if self.workout_exercises[self.current_exercise] == 2: message = self.planks_encouragement()
+				if self.workout_exercises[self.current_exercise] == 3: message = self.jumpingjacks_encouragement()
+				if self.workout_exercises[self.current_exercise] == 4: message = self.calfraises_encouragement()
+				if self.workout_exercises[self.current_exercise] == 5: message = self.wallsits_encouragement()
+				if self.workout_exercises[self.current_exercise] == 6: message = self.pushups_encouragement()
+				if self.workout_exercises[self.current_exercise] == 7: message = self.lunges_encouragement()
+				if self.workout_exercises[self.current_exercise] == 8: message = self.squats_encouragement()
+				if self.workout_exercises[self.current_exercise] == 9: message = self.suicides_encouragement()
+				if self.workout_exercises[self.current_exercise] == 10: message = self.explosions_encouragement()
+				if self.workout_exercises[self.current_exercise] == 11: message = self.waterbreak_encouragement()
+			if self.exercise_timestamp == 3
+				self.exercise_timestamp = 0
+			else : self.exercise_timestamp = self.exercise_timestamp + 1
 		self.current_exercise = self.current_exercise + 1
 		return message
 			
 
 	def get_number_of_messages(self):
 		return len(self.workout_exercises)*4
+
+	def get_difficulty_message(self):
+		comment = ["How hard will your workout be today? Easy, medium, or hard?","What'll it be this time? Easy, medium, or hard?"]
+		return comment[random.randint(0,len(comment)-1)]
+
+	def get_difficulty_response(self):
+		if workout_difficulty == 0:
+			comment = ["You have chosen wimp-mode.","Commencing candy-land mode.","This will be a piece of cake!","Okay, no problem. Maybe we can do a really hard one next time.","Mode: insanely difficult. Just kidding! We'll do easy mode.","Easy mode it is!","You have chosen a warm and fuzzy workout. Doesn't it just make you feel all warm and fuzzy inside?","I knew you would say that.","That's a great place to start!","Easy it is!"]
+		if workout_difficulty == 1:
+			comment = ["Medocre mode, here we come.","You have selected medium. Again.","You know, I saw an eleven-year-old kid once who did eighteen-hundred situps. Who knows, maybe you can too?","Er, okay.","Difficulty: moderate.","Your audacity is like the cold of the polar ice caps. Melting.","Alright, we're working our way up!"]
+		if workout_difficulty == 2:
+			comment = ["Huh. Of course you would.","Are you sure you want to do that? Alright...","Huh, when pigs fly! Uh, I mean, yes! Hard mode, here we come!","Yes! You can do hard things!","You have chosen beast mode.","You have selected the horribly awful, insanely difficult master level! Otherwise known as hard.","Mission: impossible.","You. Are. Awesome."]
+		return comment[random.randint(0,len(comment)-1)]
 
 #Start/finish workout:
 
@@ -103,7 +119,7 @@ class workIt:
 		return chaser[random.randint(0,len(chaser)-1)]
 
 	def runinplace_encouragement(self):
-		comment = ["Run like there's no tomorrow!","Good, you're huffing and puffing.","Run!","We cannot get out; we cannot get out. They are coming.","You're not getting anywhere; run!","Faster! You're being chased by "+antagonist()+" Go go go!"]
+		comment = ["Run like there's no tomorrow!","Good, you're huffing and puffing.","Run!","We cannot get out; we cannot get out. They are coming.","You're not getting anywhere; run!","Faster! You're being chased by "+self.runinplace_antagonist()+" Go go go!"]
 		return comment[random.randint(0,len(comment)-1)]
 
 #Situps/////////////////////////////////////////////////////////
