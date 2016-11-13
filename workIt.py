@@ -58,7 +58,7 @@ class workIt:
 				if self.workout_exercises[self.current_exercise] == 9: message = self.suicides_start()
 				if self.workout_exercises[self.current_exercise] == 10: message = self.explosions_start()
 				if self.workout_exercises[self.current_exercise] == 11: message = self.waterbreak_start()
-			else
+			else :
 				if self.workout_exercises[self.current_exercise] == 0: message = self.runinplace_encouragement()
 				if self.workout_exercises[self.current_exercise] == 1: message = self.situps_encouragement()
 				if self.workout_exercises[self.current_exercise] == 2: message = self.planks_encouragement()
@@ -71,7 +71,7 @@ class workIt:
 				if self.workout_exercises[self.current_exercise] == 9: message = self.suicides_encouragement()
 				if self.workout_exercises[self.current_exercise] == 10: message = self.explosions_encouragement()
 				if self.workout_exercises[self.current_exercise] == 11: message = self.waterbreak_encouragement()
-			if self.exercise_timestamp == 3
+			if self.exercise_timestamp == 3 :
 				self.exercise_timestamp = 0
 			else : self.exercise_timestamp = self.exercise_timestamp + 1
 		self.current_exercise = self.current_exercise + 1
