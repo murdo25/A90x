@@ -74,10 +74,11 @@ class workIt:
 				if self.workout_exercises[self.current_exercise] == 11: message = self.waterbreak_encouragement()
 			if self.exercise_timestamp == self.messages_per_exercise-1 :
 				self.exercise_timestamp = 0
+				self.current_exercise = self.current_exercise + 1
 			else : self.exercise_timestamp = self.exercise_timestamp + 1
-		self.current_exercise = self.current_exercise + 1
 		return message
-			
+
+###
 
 	def get_number_of_messages(self):
 		return len(self.workout_exercises)*4
