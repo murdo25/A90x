@@ -12,6 +12,7 @@ class workIt:
 
 	#workout_difficulty is 0,1, or 2  #workout_length
 	def __init__(self, workout_difficulty):
+		self.messages_per_exercise = 3 #including start message
 		self.workout_exercises = [0,0,0,0] #only easy and medium exercises
 		self.current_exercise = 0 #index of current exercise in the array
 		self.exercise_timestamp = 0 #0-3, as each exercise is one minute
@@ -71,7 +72,7 @@ class workIt:
 				if self.workout_exercises[self.current_exercise] == 9: message = self.suicides_encouragement()
 				if self.workout_exercises[self.current_exercise] == 10: message = self.explosions_encouragement()
 				if self.workout_exercises[self.current_exercise] == 11: message = self.waterbreak_encouragement()
-			if self.exercise_timestamp == 3 :
+			if self.exercise_timestamp == self.messages_per_exercise-1 :
 				self.exercise_timestamp = 0
 			else : self.exercise_timestamp = self.exercise_timestamp + 1
 		self.current_exercise = self.current_exercise + 1
