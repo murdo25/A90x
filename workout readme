@@ -1,0 +1,26 @@
+WORKOUT README:
+#Note: workIt.py is a copied into lambda_function.py, so the separate file for it is unnecessary.
+#The AWS Lambda function is what goes in Amazon's web server. (the lambda_function.py)
+
+#Workout exercises:
+	RUN_IN_PLACE
+	SITUPS	
+	SUICIDES
+	PUSHUPS
+	PLANKS
+	JUMPING_JACKS
+	CALF_RAISES
+	WALL_SITS
+	LUNGES
+	SQUATS
+	EXPLOSIONS
+	WATER_BREAK
+# Unimplemented thus far:
+	STRETCH_WINDMILLS
+	STRETCH_TRUNK_TWISTS
+	STRETCH_REACH
+	STRETCH_TOUCH_TOES
+	STRETCH_SPLITs
+	STRETCH_STAR
+	STRETCH_ARM_PULLS
+	STRETCH_BREATHING

@@ -84,7 +84,7 @@ class workIt:
 		return len(self.workout_exercises)*self.messages_per_exercise
 
 	def get_difficulty_message(self):
-		comment = ["How hard will your workout be today? Easy, medium, or hard?","What'll it be this time? Easy, medium, or hard?"]
+		comment = ["How hard will your workout be today? Easy, medium, or hard?","What'll it be this time? Easy, medium, or hard?","Pick your poison! Easy, medium, or hard"]
 		return comment[random.randint(0,len(comment)-1)]
 
 	def get_difficulty_response(self):

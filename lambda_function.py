@@ -1,4 +1,3 @@
-
 import random
 
 #THESE ARE THE FUNCTIONS TO BE CALLED EXTERNALLY:
@@ -29,13 +28,13 @@ class workIt:
 			self.workout_exercises = [0,0,0,0,0,0,11,0,0,0,0]
 
 		if workout_difficulty != 2:
-			for exercise in self.workout_exercises:
+			for exercise in range(0,len(self.workout_exercises)-1):
 				random_choice = random.randint(0,len(self.exercises_easy)+len(self.exercises_hard)-1)
 				while random_choice in self.workout_exercises:
 					random_choice = random.randint(0,len(self.exercises_easy)+len(self.exercises_hard)-1)
 				self.workout_exercises[exercise] = random_choice
 		else :
-			for exercise in self.workout_exercises:
+			for exercise in range(0,len(self.workout_exercises)-1):
 				random_choice = random.randint(0,self.possible_exercises-1)
 				while random_choice in self.workout_exercises:
 					random_choice = random.randint(0,self.possible_exercises-1)
@@ -82,10 +81,10 @@ class workIt:
 ###
 
 	def get_number_of_messages(self):
-		return len(self.workout_exercises)*4
+		return len(self.workout_exercises)*self.messages_per_exercise
 
 	def get_difficulty_message(self):
-		comment = ["How hard will your workout be today? Easy, medium, or hard?","What'll it be this time? Easy, medium, or hard?"]
+		comment = ["How hard will your workout be today? Easy, medium, or hard?","What'll it be this time? Easy, medium, or hard?","Pick your poison! Easy, medium, or hard."]
 		return comment[random.randint(0,len(comment)-1)]
 
 	def get_difficulty_response(self):
